@@ -37,6 +37,6 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500)
     res.render('error')
 })
-process.env.PORT = 2000 //在这里更改端口号
+process.env.PORT = 3000 //在这里更改端口号
 
 module.exports = app
