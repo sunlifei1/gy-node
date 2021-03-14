@@ -1,9 +1,22 @@
 var express = require('express')
 var router = express.Router()
 var Mock = require('mockjs')
+var fs = require('fs')
 /* GET home page. */
 
 router.get('/', function (req, res, next) {
+    // 异步读取
+    fs.readFile('./123.txt', function (err, data) {
+        if (err) {
+            return console.error(err)
+        }
+        console.log('异步读取：' + data.toString())
+        res.send({
+            data: JSON.parse(data),
+            code: 200,
+            msg: 'success',
+        }) //发送json格式的内容
+    })
     let data = [
         {
             id: 1,
@@ -64,8 +77,22 @@ router.get('/', function (req, res, next) {
             url: 'https://www.baidu.com',
         },
     ]
-    // res.send('发送文本格式的内容')   //发送文本格式的内容
-    res.json({ data: data, code: 200, msg: 'success' }) //发送json格式的内容
+})
+router.post('/add', function (req, res, next) {
+    console.log(req.body.data)
+    // 异步读取
+    //3. fs.writeFile 写入文件（会覆盖之前的内容）（文件不存在就创建） utf8参数可以省略
+    fs.writeFile('123.txt', JSON.stringify(req.body.data), 'utf8', function (
+        error
+    ) {
+        if (error) {
+            console.log(error)
+            return false
+        }
+        console.log('写入成功')
+    })
+
+    res.send({ data: [], code: 200, msg: 'success' })
 })
 
 module.exports = router
