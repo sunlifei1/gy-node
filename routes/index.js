@@ -78,7 +78,7 @@ router.get('/', function (req, res, next) {
         },
     ]
 })
-router.post('/add', function (req, res, next) {
+router.get('/add', function (req, res, next) {
     console.log(req.body.data)
     // 异步读取
     //3. fs.writeFile 写入文件（会覆盖之前的内容）（文件不存在就创建） utf8参数可以省略
@@ -91,16 +91,16 @@ router.post('/add', function (req, res, next) {
         }
         console.log('写入成功')
     })
-    res.header('Access-Control-Allow-Origin', '*')
+    // res.header('Access-Control-Allow-Origin', '*')
 
-    //Access-Control-Allow-Headers ,可根据浏览器的F12查看,把对应的粘贴在这里就行
+    // //Access-Control-Allow-Headers ,可根据浏览器的F12查看,把对应的粘贴在这里就行
 
-    res.header('Access-Control-Allow-Headers', '*')
+    // res.header('Access-Control-Allow-Headers', '*')
 
-    res.header('Access-Control-Allow-Methods', '*')
+    // res.header('Access-Control-Allow-Methods', '*')
 
-    res.header('Content-Type', 'application/json;charset=utf-8')
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8081')
+    // res.header('Content-Type', 'application/json;charset=utf-8')
+    // res.header('Access-Control-Allow-Origin', 'http://localhost:8081')
 
     res.send({ data: [], code: 200, msg: 'success' })
 })
