@@ -78,7 +78,7 @@ router.get('/', function (req, res, next) {
         },
     ]
 })
-router.get('/add', function (req, res, next) {
+router.post('/add', function (req, res, next) {
     console.log(req.body.data)
     // 异步读取
     //3. fs.writeFile 写入文件（会覆盖之前的内容）（文件不存在就创建） utf8参数可以省略
