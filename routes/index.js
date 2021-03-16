@@ -101,11 +101,7 @@ router.post('/add', function (req, res, next) {
 
     // res.header('Content-Type', 'application/json;charset=utf-8')
     // res.header('Access-Control-Allow-Origin', 'http://localhost:8081')
-    res.header('Access-Control-Allow-Origin', '*')
-    res.header(
-        'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept'
-    )
+
     res.send({ data: [], code: 200, msg: 'success' })
 })
 
