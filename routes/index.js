@@ -78,7 +78,7 @@ router.get('/', function (req, res, next) {
         },
     ]
 })
-router.get('/add', function (req, res, next) {
+router.post('/add', function (req, res, next) {
     console.log(req.body.data)
     // 异步读取
     //3. fs.writeFile 写入文件（会覆盖之前的内容）（文件不存在就创建） utf8参数可以省略
@@ -101,7 +101,11 @@ router.get('/add', function (req, res, next) {
 
     // res.header('Content-Type', 'application/json;charset=utf-8')
     // res.header('Access-Control-Allow-Origin', 'http://localhost:8081')
-
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept'
+    )
     res.send({ data: [], code: 200, msg: 'success' })
 })
 
