@@ -27,9 +27,7 @@ app.all('*', function (req, res, next) {
         'Access-Control-Allow-Headers',
         'Content-Type,Authorization,X-Requested-With'
     )
-
     res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS')
-
     res.header('Content-Type', 'application/json;charset=utf-8')
     res.header('Access-Control-Allow-Credentials', 1)
     next()
