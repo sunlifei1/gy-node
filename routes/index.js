@@ -80,14 +80,22 @@ router.get('/', function (req, res, next) {
     ]
 })
 router.post('/add', function (req, res, next) {
-    console.log(req.body.data)
-    fs.writeFile('123.txt', JSON.stringify(req.body.data), 'utf8', (error) => {
-        if (error) {
-            console.log(error)
-            return false
+    // 异步读取
+    fs.readFile('./123.txt', function (err, data) {
+        if (err) {
+            return console.error(err)
         }
-        console.log('写入成功')
-        res.send({ data: [], code: 200, msg: 'success' })
+        let readResult = JSON.parse(data)
+        readResult.push(req.body.data)
+        console.log(req.body.data)
+        fs.writeFile('123.txt', JSON.stringify(readResult), 'utf8', (error) => {
+            if (error) {
+                console.log(error)
+                return false
+            }
+            console.log('写入成功')
+            res.send({ data: [], code: 200, msg: 'success' })
+        })
     })
 })
 router.post('/add1', function (req, res, next) {
