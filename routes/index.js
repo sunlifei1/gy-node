@@ -99,7 +99,7 @@ router.post('/add1', function (req, res, next) {
             return false
         }
         console.log('写入成功')
-        res.send({ data: [], code: 200, msg: 'success' })
+        res.send({ data: [], code: 200, msg: 'success1' })
     })
 })
 
